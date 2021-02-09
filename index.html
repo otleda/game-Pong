@@ -6,27 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pog</title>
 </head>
-<body>
+<body>  
     <canvas id="canvas" width="800" height="600"></canvas>
 
     <script>
         let leafDrawing = document.getElementById('canvas'); 
         let drawingArea = leafDrawing.getContext('2d');
 
+        let widthArea = 800;
+        let reightArea = 600;
+        let widthRede = 10; 
+        let widthBall = 20; 
+        let widthPlayer = 15; 
+        let heightPlayer = 100; 
+        
+        
         drawingArea.fillStyle = '#23272a';
-        drawingArea.fillRect(0, 0, 800, 600);
-        
-        drawingArea.fillStyle = '#99aab5';
-        let rede = drawingArea.fillRect(395, 0, 10, 600);
-        
-        drawingArea.fillStyle = '#7289da';
-        let leftPlayer = drawingArea.fillRect(0, 250, 10, 100);
+        drawingArea.fillRect(0, 0, widthArea, reightArea);
 
-        drawingArea.fillStyle = '#7289da';
-        let rightPlayer = drawingArea.fillRect(790, 250, 10, 100);
+        //rede
+        drawingArea.fillStyle = '#99aab5';
+        let rede = drawingArea.fillRect(widthArea / 2 - widthRede, 0, widthRede, reightArea);
         
-        drawingArea.fillStyle = '#2c2f33';
-        let ball = drawingArea.fillRect(100, 100, 20, 20);
+        //jogador 01
+        drawingArea.fillStyle = '#7289da';
+        let leftPlayer = drawingArea.fillRect(widthArea - widthPlayer, 250, widthPlayer, 100);
+
+        //jogador 02
+        drawingArea.fillStyle = 'red';
+        let rightPlayer = drawingArea.fillRect(0,reightArea/2 - heightPlayer/2 , widthPlayer, 100);
+        
+        //ball
+        drawingArea.fillStyle = '#50555b';
+        let ball = drawingArea.fillRect(100, 100, widthBall, widthBall);
 
     </script>
 </body>

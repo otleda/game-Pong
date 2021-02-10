@@ -2,12 +2,12 @@ window.onload = function() {
     setInterval(execute, 1000 / 30);
 }
 
-let positionBallX = positionBallY = 100;
+let positionBallX = positionBallY = 0;
+let speedBallX = speedBallY = 5;
 
 function execute() {
     let leafDrawing = document.getElementById('canvas'); 
     let drawingArea = leafDrawing.getContext('2d');
-
 
     let widthArea = 800;
     let reightArea = 600;
@@ -15,7 +15,6 @@ function execute() {
     let widthBall = 20; 
     let widthPlayer = 15; 
     let heightPlayer = 100; 
-
 
     drawingArea.fillStyle = '#23272a';
     drawingArea.fillRect(0, 0, widthArea, reightArea);
@@ -36,6 +35,24 @@ function execute() {
     drawingArea.fillStyle = '#50555b';
     drawingArea.fillRect(positionBallX - widthBall/2 , positionBallY - widthBall/2 , widthBall, widthBall);
 
-    positionBallX ++;
-    positionBallY ++;
+    positionBallY = positionBallY + speedBallY;
+    positionBallX = positionBallX + speedBallX;
+    
+    //Eixo Y superior
+    if (positionBallY < 0 && speedBallY < 0 ) {
+        speedBallY = -speedBallY;
+    }
+    //Eixo Y inferior
+    if (positionBallY > reightArea && speedBallY > 0) {
+        speedBallY = -speedBallY;
+    }
+
+    //Eixo X superior
+    if (positionBallX < 0 && speedBallX < 0 ) {
+        speedBallX = -speedBallX;
+    }
+    //Eixo X inferior
+    if(positionBallX > widthArea && speedBallX > 0) {
+        speedBallX = -speedBallX;
+    }
 }
